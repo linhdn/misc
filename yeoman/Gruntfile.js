@@ -90,10 +90,21 @@ module.exports = function (grunt) {
       }
     },
     coffee: {
+        options: {
+            bare: true
+        },
+        // Grunt will search for "**/?.js" under "lib/" when the "minify" task
+        // runs and build the appropriate src-dest file mappings then, so you
+        // don't need to update the Gruntfile when files are added or removed.
       dist: {
-        files: {
-          '.tmp/scripts/coffee.js': '<%= yeoman.app %>/scripts/*.coffee'
-        }
+        //files: {
+            expand: true,     // Enable dynamic expansion.
+            cwd: '<%= yeoman.app %>/scripts',      // Src matches are relative to this path.
+            src: ['**/*.coffee'], // Actual pattern(s) to match.
+            dest: '.tmp/scripts',   // Destination path prefix.
+            ext: '.js'   // Dest filepaths will have this extension.
+          //'.tmp/scripts/coffee.js': '<%= yeoman.app %>/scripts/*.coffee'
+        //},
       },
       test: {
         files: [{
