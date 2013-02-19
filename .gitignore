@@ -1,3 +1,6 @@
 node_modules
 compass_twitter_bootstrap
 .idea
+.sass-cache
+components
+.tmp
